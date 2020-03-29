@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    #restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    #environment:
+      #- "POSTGRES_HOST_AUTH_METHOD=trust"
+  #db:
+        #- "3306"
+    #volumes:
+        #- ./db:/var/lib/mysql
+    #environment:
+        #MYSQL_ROOT_PASSWORD: 'db888'
+        #MYSQL_USER: 'cbuser'
+        #MYSQL_PASSWORD: 'db888'
+        #MYSQL_DATABASE: 'cookbook'
+    #restart: always
+        #environment:
+        #MYSQL_DATABASE: api
+        #MYSQL_USER: root
+        #MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        #MYSQL_ROOT_PASSWORD: db888
+    #environment:
