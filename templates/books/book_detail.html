@@ -1,6 +1,5 @@
 {% extends '_base.html' %}
 {% load static %}
-
 {% block title %}{{ book.title }}{% endblock title %}
 
 {% block content %}
@@ -9,6 +8,14 @@
   <p>Author: {{ book.author }}</p>
   <p>Price: {{ book.price }}</p>
   <p><img class="bookcover" src="{% static 'images/1.jpg'  %}"></p>
+<div>
+    <h3> Reviews</h3>
+    <ul>
+        {% for review in book.reviews.all %}
+        <li>{{ review.review }} ({{ review.author }})</li>
+    {% endfor %}
+    </ul>
+</div>
 
 </div>
 {% endblock content %}
