@@ -7,6 +7,16 @@
 {% block content %}
 
     <h1>Homepage</h1>
+
+    <form class="form-inline mt-2 mt-md-0"  action=" {% url 'search_results' %}" method="get"> 
+
+    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search"aria-label="Search">
+    </form>
+{% endblock content %}
+
+{% comment %}
+
+
     <img class="bookcover" src="{% static 'images/2.jpg'  %}">
 
     {% if user.is_authenticated %}
@@ -21,3 +31,4 @@
     {% endif %}
 
 {% endblock content %}
+{% endcomment %}
