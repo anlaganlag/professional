@@ -1,13 +1,21 @@
 {% extends '_base.html' %}
+
 {% load static %}
+
 {% block title %}{{ book.title }}{% endblock title %}
 
 {% block content %}
 <div class="book-detail">
+{% comment %}
+  <p><img class="bookcover" src="{% static 'images/1.jpg'  %}"></p>
+{% endcomment %}
+  {% if book.cover %}
+    <p><img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.title }}"</p>
+  {% endif %}
+  
   <h2><a href="">{{ book.title }}</a></h2>
   <p>Author: {{ book.author }}</p>
   <p>Price: {{ book.price }}</p>
-  <p><img class="bookcover" src="{% static 'images/1.jpg'  %}"></p>
 <div>
     <h3> Reviews</h3>
     <ul>
